@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Festiverse 관리자</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<section id="login-view" class="view">
+  <form id="login-form" class="login-card">
+    <h1>Festiverse 관리자</h1>
+    <input type="email" id="login-email" placeholder="이메일" required />
+    <input type="password" id="login-password" placeholder="비밀번호" required />
+    <button type="submit">로그인</button>
+    <p id="login-error" class="error-text"></p>
+  </form>
+</section>
+
+<section id="app-view" class="view hidden">
+  <header class="topbar">
+    <h1>Festiverse 관리자</h1>
+    <button id="logout-btn" class="ghost-btn">로그아웃</button>
+  </header>
+
+  <main class="layout">
+    <section class="panel">
+      <div class="panel-header">
+        <h2>축제</h2>
+        <button id="new-festival-btn">+ 새 축제</button>
+      </div>
+      <ul id="festival-list" class="list"></ul>
+    </section>
+
+    <section class="panel">
+      <div class="panel-header">
+        <h2 id="performance-panel-title">공연 일정</h2>
+        <button id="new-performance-btn" disabled>+ 새 공연</button>
+      </div>
+      <p id="performance-hint" class="hint-text">왼쪽에서 축제를 선택하세요.</p>
+      <ul id="performance-list" class="list"></ul>
+    </section>
+  </main>
+</section>
+
+<dialog id="festival-dialog">
+  <form id="festival-form" method="dialog">
+    <h3 id="festival-form-title">새 축제</h3>
+    <input type="hidden" id="festival-id" />
+    <label>이름 <input type="text" id="festival-name" required /></label>
+    <label>장소 <input type="text" id="festival-location" /></label>
+    <label>시작일 <input type="date" id="festival-start" required /></label>
+    <label>종료일 <input type="date" id="festival-end" required /></label>
+    <label>커버 이미지 URL <input type="url" id="festival-cover" /></label>
+    <div class="dialog-actions">
+      <button type="button" id="festival-cancel-btn" class="ghost-btn">취소</button>
+      <button type="submit" id="festival-save-btn">저장</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="performance-dialog">
+  <form id="performance-form" method="dialog">
+    <h3 id="performance-form-title">새 공연</h3>
+    <input type="hidden" id="performance-id" />
+    <label>아티스트 <input type="text" id="performance-artist" required /></label>
+    <label>무대 <input type="text" id="performance-stage" /></label>
+    <label>시작 시각 <input type="datetime-local" id="performance-start" required /></label>
+    <label>종료 시각 <input type="datetime-local" id="performance-end" /></label>
+    <div class="dialog-actions">
+      <button type="button" id="performance-cancel-btn" class="ghost-btn">취소</button>
+      <button type="submit" id="performance-save-btn">저장</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
