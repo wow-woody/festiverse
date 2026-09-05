@@ -1,0 +1,425 @@
+:root {
+    --bg: #f1f0ef;
+    --surface: #ffffff;
+    --surface-soft: #f7f6f4;
+    --text: #121212;
+    --muted: #7a7a7a;
+    --line: #e7e4df;
+    --shadow: 0 10px 22px rgba(0, 0, 0, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    min-height: 100%;
+    margin: 0;
+}
+
+body {
+    font-family: 'Manrope', 'Segoe UI', sans-serif;
+    background: #efeeec;
+    color: var(--text);
+}
+
+.search-container {
+    position: relative;
+    width: min(100%, 480px);
+    margin: 0 auto;
+    min-height: 100vh;
+    padding: 10px 8px 14px;
+    background: linear-gradient(180deg, #f7f6f4 0%, #f1f0ee 100%);
+}
+
+h2 {
+    margin: 6px 2px 10px;
+    font-size: 0;
+    line-height: 1;
+}
+
+h2::before {
+    content: 'TRENDING';
+    display: block;
+    font-size: 0.72rem;
+    line-height: 1;
+    letter-spacing: 0.24em;
+    font-weight: 800;
+    color: #9a9996;
+}
+
+input[type='search'] {
+    width: 100%;
+    height: 48px;
+    border: 1px solid #e6e3df;
+    border-radius: 999px;
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18' fill='none'%3E%3Ccircle cx='8' cy='8' r='5.5' stroke='%23908b86' stroke-width='1.6'/%3E%3Cpath d='M12.2 12.2L16 16' stroke='%23908b86' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat 14px 50%;
+    padding: 0 16px 0 40px;
+    font: inherit;
+    font-size: 0.88rem;
+    color: var(--text);
+    box-shadow: var(--shadow);
+    outline: none;
+}
+
+input[type='search']::placeholder {
+    color: #8f8f8f;
+    font-size: 0.88rem;
+}
+
+input[type='search']:focus {
+    border-color: #d7d2cc;
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.03), var(--shadow);
+}
+
+ul {
+    position: absolute;
+    top: 68px;
+    left: 8px;
+    right: 8px;
+    z-index: 5;
+    max-height: calc(100vh - 86px);
+    overflow-y: auto;
+    background: #f1f0ee;
+    border-top: 1px solid #e2dfda;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.search-container ul {
+    display: none;
+}
+
+.search-container:focus-within ul {
+    display: block;
+}
+
+li {
+    margin: 0;
+}
+
+li + li {
+    margin-top: 4px;
+}
+
+li a {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+li a > div {
+    display: grid;
+    grid-template-columns: 54px minmax(0, 1fr) 16px;
+    gap: 12px;
+    align-items: center;
+    min-height: 78px;
+    padding: 7px 2px 7px 0;
+}
+
+li a > div::before {
+    content: '';
+    grid-column: 1;
+    grid-row: 1;
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+li:nth-child(1) a > div::before {
+    background: linear-gradient(135deg, #f2b9ff 0%, #9a4cff 55%, #1c1230 100%);
+}
+
+li:nth-child(2) a > div::before {
+    background: linear-gradient(135deg, #8a72ff 0%, #2b1a4f 58%, #090909 100%);
+}
+
+li:nth-child(3) a > div::before {
+    background: linear-gradient(135deg, #ff9728 0%, #ff5a66 58%, #6f1c62 100%);
+}
+
+li:nth-child(4) a > div::before {
+    background: linear-gradient(135deg, #c13b7d 0%, #c13b7d 100%);
+}
+
+li:nth-child(5) a > div::before {
+    background: linear-gradient(135deg, #f3d1bf 0%, #b98b72 58%, #4a4a4a 100%);
+}
+
+li:nth-child(6) a > div::before {
+    background: linear-gradient(135deg, #55bfff 0%, #2270b0 58%, #0e1f3d 100%);
+}
+
+li:nth-child(7) a > div::before {
+    background: linear-gradient(135deg, #4ec8b1 0%, #33ae86 58%, #137264 100%);
+}
+
+li:nth-child(8) a > div::before {
+    background: linear-gradient(135deg, #9a47d8 0%, #8e33c0 58%, #521a79 100%);
+}
+
+li:nth-child(9) a > div::before {
+    background: linear-gradient(135deg, #111 0%, #1f1f1f 58%, #000 100%);
+}
+
+li:nth-child(10) a > div::before {
+    background: linear-gradient(135deg, #42c48a 0%, #2aa679 58%, #0f6e56 100%);
+}
+
+li:nth-child(11) a > div::before {
+    background: linear-gradient(135deg, #4f69db 0%, #304bb8 58%, #21337f 100%);
+}
+
+li a > div > * {
+    position: relative;
+    z-index: 1;
+}
+
+li a > div::after {
+    content: '›';
+    justify-self: end;
+    color: #747474;
+    font-size: 2rem;
+    line-height: 1;
+    font-weight: 700;
+    transform: translateY(-1px);
+}
+
+img {
+    width: 54px;
+    height: 54px;
+    border-radius: 12px;
+    object-fit: cover;
+    display: block;
+    opacity: 0;
+    background: transparent;
+    grid-column: 1;
+    grid-row: 1;
+}
+
+h3 {
+    margin: 0;
+    font-size: 0;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    min-width: 0;
+}
+
+h3::before,
+h3::after {
+    display: block;
+}
+
+h3::after {
+    white-space: pre-line;
+    line-height: 1.35;
+}
+
+li:nth-child(1) h3::before {
+    content: 'THE GRATEFUL CAMP 2026 - 신안';
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: var(--text);
+}
+
+li:nth-child(1) h3::after {
+    content: '짱뚱어해수욕장 일대\A2026-08-31 · D-4';
+    margin-top: 3px;
+    font-size: 0.76rem;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+li:nth-child(2) h3::before {
+    content: '2026 지리산 재즈페스티벌 - 구례';
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: var(--text);
+}
+
+li:nth-child(2) h3::after {
+    content: '지리산천은사\A2026-08-31 · D-4';
+    margin-top: 3px;
+    font-size: 0.76rem;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+li:nth-child(3) h3::before {
+    content: '2026 잔다리 페스타';
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: var(--text);
+}
+
+li:nth-child(3) h3::after {
+    content: '홍대 일대\A2026-08-31 · D-4';
+    margin-top: 3px;
+    font-size: 0.76rem;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+li:nth-child(4) h3::before {
+    content: '2026 WITH STAGE & 시즌6';
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: var(--text);
+}
+
+li:nth-child(4) h3::after {
+    content: 'CKL스테이지\A2026-08-31 · D-4';
+    margin-top: 3px;
+    font-size: 0.76rem;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+li:nth-child(5) h3::before {
+    content: '2026 파주포크 페스티벌';
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: var(--text);
+}
+
+li:nth-child(5) h3::after {
+    content: '문산행복센터 대공연장, 임진각 평화누리 야외공연장\A2026-08-31 · D-4';
+    margin-top: 3px;
+    font-size: 0.76rem;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+li:nth-child(6) h3::before {
+    content: '사운드 플래닛 페스티벌 2026 - 인천';
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: var(--text);
+}
+
+li:nth-child(6) h3::after {
+    content: '파라다이스시티\A2026-08-31 · D-5';
+    margin-top: 3px;
+    font-size: 0.76rem;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+li:nth-child(7) h3::before {
+    content: '매들리 메들리 2026';
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: var(--text);
+}
+
+li:nth-child(7) h3::after {
+    content: '문화비축기지\A2026-08-31 · D-5';
+    margin-top: 3px;
+    font-size: 0.76rem;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+li:nth-child(8) h3::before {
+    content: '사운드 플래닛 페스티벌 2026 <미드나잇 파티> - 인천';
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: var(--text);
+}
+
+li:nth-child(8) h3::after {
+    content: '클럽 크로마\A2026-08-31 · D-5';
+    margin-top: 3px;
+    font-size: 0.76rem;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+li:nth-child(9) h3::before {
+    content: 'VINYL ON TRACK 음악 페스티벌';
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: var(--text);
+}
+
+li:nth-child(9) h3::after {
+    content: '현대카드 UNDERSTAGE\A2026-08-31 · D-5';
+    margin-top: 3px;
+    font-size: 0.76rem;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+li:nth-child(10) h3::before {
+    content: 'SIMF 신포 인터내셔널 뮤직 페스티벌 2026 - 인천';
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: var(--text);
+}
+
+li:nth-child(10) h3::after {
+    content: '인천맥주 호랑이\A2026-08-31 · D-5';
+    margin-top: 3px;
+    font-size: 0.76rem;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+li:nth-child(11) h3::before {
+    content: '서울 파크 뮤직 페스티벌';
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: var(--text);
+}
+
+li:nth-child(11) h3::after {
+    content: '서울대학교 음악대학\A2026-08-25~2026-08-27 · D-4';
+    margin-top: 3px;
+    font-size: 0.76rem;
+    font-weight: 500;
+    color: var(--muted);
+}
+
+li a > div > div {
+    grid-column: 2;
+    min-width: 0;
+}
+
+@media (max-width: 520px) {
+    .search-container {
+        width: 100%;
+        padding: 8px 8px 12px;
+    }
+
+    input[type='search'] {
+        height: 46px;
+    }
+
+    li a > div {
+        min-height: 74px;
+        gap: 10px;
+    }
+
+    li a > div::after {
+        font-size: 1.8rem;
+    }
+
+    li a > div::before,
+    img {
+        width: 50px;
+        height: 50px;
+        border-radius: 11px;
+    }
+
+    li:nth-child(n) h3::before {
+        font-size: 0.94rem;
+    }
+
+    li:nth-child(n) h3::after {
+        font-size: 0.72rem;
+    }
+}
+}
