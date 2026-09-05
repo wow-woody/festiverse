@@ -185,6 +185,16 @@ dialog label {
   color: #444;
 }
 
+dialog label.checkbox-label {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+dialog label.checkbox-label input {
+  width: auto;
+}
+
 .dialog-actions {
   display: flex;
   justify-content: flex-end;

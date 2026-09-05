@@ -1,6 +1,6 @@
 export const Colors = {
   background: '#050505',
-  surface: '#151515',
+  surface: '#232323',
   surfaceAlt: '#1f1f1f',
   border: '#2a2a2a',
   textPrimary: '#ffffff',
@@ -8,6 +8,7 @@ export const Colors = {
   textMuted: '#6b6b6b',
   accentFrom: '#ff5f6d',
   accentTo: '#ff9a44',
+  warning: '#ffb020',
 };
 
 export const AccentGradient = [Colors.accentFrom, Colors.accentTo] as const;

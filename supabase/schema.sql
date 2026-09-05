@@ -14,9 +14,11 @@ create table if not exists performances (
   id uuid primary key default gen_random_uuid(),
   festival_id uuid not null references festivals(id) on delete cascade,
   artist_name text not null,
+  genre text,
   stage text,
   start_time timestamptz not null,
   end_time timestamptz,
+  headliner boolean not null default false,
   created_at timestamptz not null default now()
 );
 

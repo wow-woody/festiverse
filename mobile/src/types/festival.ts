@@ -11,7 +11,9 @@ export type Performance = {
   id: string;
   festival_id: string;
   artist_name: string;
+  genre: string | null;
   stage: string | null;
   start_time: string;
   end_time: string | null;
+  headliner?: boolean;
 };

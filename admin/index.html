@@ -65,9 +65,13 @@
     <h3 id="performance-form-title">새 공연</h3>
     <input type="hidden" id="performance-id" />
     <label>아티스트 <input type="text" id="performance-artist" required /></label>
+    <label>장르 <input type="text" id="performance-genre" placeholder="예: HOUSE, INDIE" /></label>
     <label>무대 <input type="text" id="performance-stage" /></label>
     <label>시작 시각 <input type="datetime-local" id="performance-start" required /></label>
     <label>종료 시각 <input type="datetime-local" id="performance-end" /></label>
+    <label class="checkbox-label">
+      <input type="checkbox" id="performance-headliner" /> 헤드라이너
+    </label>
     <div class="dialog-actions">
       <button type="button" id="performance-cancel-btn" class="ghost-btn">취소</button>
       <button type="submit" id="performance-save-btn">저장</button>

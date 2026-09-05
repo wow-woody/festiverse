@@ -165,8 +165,8 @@ function renderPerformances(performances) {
     const start = new Date(performance.start_time);
     li.innerHTML = `
       <div>
-        <div class="item-title">${performance.artist_name}</div>
-        <div class="item-meta">${start.toLocaleString()}${performance.stage ? ' · ' + performance.stage : ''}</div>
+        <div class="item-title">${performance.artist_name}${performance.headliner ? ' ⭐' : ''}</div>
+        <div class="item-meta">${start.toLocaleString()}${performance.stage ? ' · ' + performance.stage : ''}${performance.genre ? ' · ' + performance.genre : ''}</div>
       </div>
       <div class="item-actions">
         <button type="button" data-action="edit" class="ghost-btn">수정</button>
@@ -198,9 +198,11 @@ function openPerformanceDialog(performance) {
   document.getElementById('performance-form-title').textContent = performance ? '공연 수정' : '새 공연';
   document.getElementById('performance-id').value = performance?.id ?? '';
   document.getElementById('performance-artist').value = performance?.artist_name ?? '';
+  document.getElementById('performance-genre').value = performance?.genre ?? '';
   document.getElementById('performance-stage').value = performance?.stage ?? '';
   document.getElementById('performance-start').value = toLocalInputValue(performance?.start_time);
   document.getElementById('performance-end').value = toLocalInputValue(performance?.end_time);
+  document.getElementById('performance-headliner').checked = Boolean(performance?.headliner);
   performanceDialog.showModal();
 }
 
@@ -217,9 +219,11 @@ performanceForm.addEventListener('submit', async (e) => {
   const payload = {
     festival_id: selectedFestival.id,
     artist_name: document.getElementById('performance-artist').value,
+    genre: document.getElementById('performance-genre').value || null,
     stage: document.getElementById('performance-stage').value || null,
     start_time: new Date(startValue).toISOString(),
     end_time: endValue ? new Date(endValue).toISOString() : null,
+    headliner: document.getElementById('performance-headliner').checked,
   };
 
   const { error } = id
