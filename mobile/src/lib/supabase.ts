@@ -11,6 +11,11 @@ if (!supabaseUrl || !supabaseAnonKey) {
   );
 }
 
+// .env.example의 플레이스홀더 값이 그대로 남아있으면(Supabase 프로젝트 미설정) 네트워크 요청을
+// 아예 시도하지 않도록 표시. 존재하지 않는 도메인으로 fetch를 시도하면 DNS 타임아웃 때문에
+// 화면이 오래 "불러오는 중"에 머무를 수 있음.
+export const isSupabaseConfigured = !supabaseUrl.includes('xxxxxxxx');
+
 const ssrSafeStorage = {
   getItem: (key: string) => (typeof window === 'undefined' ? Promise.resolve(null) : AsyncStorage.getItem(key)),
   setItem: (key: string, value: string) =>

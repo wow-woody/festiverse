@@ -2,6 +2,7 @@ import { useLocalSearchParams } from 'expo-router';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Alert, SectionList, StyleSheet, Switch, Text, View } from 'react-native';
 
+import { Colors, Spacing } from '@/constants/theme';
 import { cancelReminder, isReminderSet, scheduleReminder } from '@/lib/notifications';
 import { supabase } from '@/lib/supabase';
 import type { Performance } from '@/types/festival';
@@ -56,7 +57,15 @@ function ReminderToggle({ performance }: { performance: Performance }) {
     }
   };
 
-  return <Switch value={enabled} disabled={busy} onValueChange={onToggle} />;
+  return (
+    <Switch
+      value={enabled}
+      disabled={busy}
+      onValueChange={onToggle}
+      trackColor={{ false: Colors.surfaceAlt, true: Colors.accentTo }}
+      thumbColor="#ffffff"
+    />
+  );
 }
 
 export default function FestivalScheduleScreen() {
@@ -91,7 +100,7 @@ export default function FestivalScheduleScreen() {
   if (loading) {
     return (
       <View style={styles.center}>
-        <Text>불러오는 중...</Text>
+        <Text style={styles.stateText}>불러오는 중...</Text>
       </View>
     );
   }
@@ -111,7 +120,7 @@ export default function FestivalScheduleScreen() {
       contentContainerStyle={styles.list}
       ListEmptyComponent={
         <View style={styles.center}>
-          <Text>등록된 공연이 없습니다.</Text>
+          <Text style={styles.stateText}>등록된 공연이 없습니다.</Text>
         </View>
       }
       renderSectionHeader={({ section }) => <Text style={styles.dayHeader}>{section.title}</Text>}
@@ -132,26 +141,30 @@ export default function FestivalScheduleScreen() {
 }
 
 const styles = StyleSheet.create({
-  center: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 16 },
-  errorText: { color: '#c0392b' },
-  list: { padding: 16 },
+  center: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: Spacing.lg, backgroundColor: Colors.background },
+  stateText: { color: Colors.textSecondary },
+  errorText: { color: '#ff6b6b' },
+  list: { padding: Spacing.lg, backgroundColor: Colors.background },
   dayHeader: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: '700',
-    color: '#888',
+    color: Colors.textMuted,
     textTransform: 'uppercase',
-    marginTop: 16,
-    marginBottom: 8,
+    letterSpacing: 0.5,
+    marginTop: Spacing.lg,
+    marginBottom: Spacing.sm,
   },
   row: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingVertical: 10,
-    borderBottomWidth: StyleSheet.hairlineWidth,
-    borderBottomColor: '#ddd',
+    paddingVertical: 12,
+    paddingHorizontal: Spacing.md,
+    marginBottom: Spacing.sm,
+    backgroundColor: Colors.surface,
+    borderRadius: 12,
   },
   rowText: { flex: 1, gap: 2, paddingRight: 12 },
-  artist: { fontSize: 16, fontWeight: '600' },
-  meta: { color: '#555' },
+  artist: { fontSize: 16, fontWeight: '600', color: Colors.textPrimary },
+  meta: { color: Colors.textSecondary, fontVariant: ['tabular-nums'] },
 });
